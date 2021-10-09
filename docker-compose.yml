@@ -15,15 +15,14 @@ services:
       context: ./api
     depends_on:
       - postgres
-    volumes:
-      - /app/node_modules
-      - ./server:/app
     environment:
       - DB_USER=demoshop
       - DB_PASSWORD=topsecret
       - DB_HOST=postgres
       - DB_PORT=5432
       - API_PORT=8000
+    ports:
+      - "8000:8000"
 
   frontend:
     build:
@@ -31,11 +30,8 @@ services:
       context: ./frontend
     depends_on:
       - api
-    volumes:
-      - /app/node_modules
-      - ./frontend:/app
     environment:
-      - API_HOST=api
+      - API_HOST=0.0.0.0
       - API_PORT=8000
     ports:
       - "3000:3000"

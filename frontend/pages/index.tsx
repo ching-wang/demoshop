@@ -2,8 +2,22 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import {useEffect, useState} from "react";
+
+const apiHost = process.env.API_HOST;
+const apiPort = process.env.API_PORT;
 
 const Home: NextPage = () => {
+  console.log({apiHost, apiPort})
+
+  const [apiRootRes, setApiRootRes] = useState<Record<string, string>>({})
+  
+  useEffect(() => {
+    fetch(`http://${apiHost}:${apiPort}/`)
+        .then(res => res.json())
+        .then(json => setApiRootRes(json))
+  }, [])
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,8 +28,10 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a href="https://nextjs.org">Next.js!</a> v1
         </h1>
+
+        <p>The API says: {apiRootRes?.HELLO || ""}</p>
 
         <p className={styles.description}>
           Get started by editing{' '}

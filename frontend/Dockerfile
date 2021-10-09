@@ -13,6 +13,10 @@ FROM node:alpine AS builder
 WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
+ARG API_HOST
+ENV API_HOST=${API_HOST:-0.0.0.0}
+ARG API_PORT
+ENV API_PORT=${API_PORT:-8000}
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 
 # Production image, copy all the files and run next
