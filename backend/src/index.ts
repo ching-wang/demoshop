@@ -1,14 +1,11 @@
-import * as http from "http";
+/**
+ * Start Express server.
+ */
+import { app } from "./app";
 
-const host = "0.0.0.0";
-const port = Number(process.env.API_PORT);
+const server = app().listen(app().get("port"), () => {
+  console.log("  App is running on :%d", app().get("port"));
+  console.log("  Press CTRL-C to stop\n");
+});
 
-const server = http.createServer((req, res) => {
-    console.log("REQUEST")
-    res.setHeader("Content-Type", "application/json");
-    res.writeHead(200);
-    res.end(JSON.stringify({HELLO: "WORLD"}));
-});
-server.listen(port, host, () => {
-    console.log(`3 Server is running on ${host}:${port}`);
-});
+export default server;
