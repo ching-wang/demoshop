@@ -32,7 +32,7 @@ services:
     depends_on:
       - backend
     environment:
-      - API_HOST=0.0.0.0
-      - API_PORT=8000
+      - BACKEND_HOST=backend
+      - BACKEND_PORT=8000
     ports:
       - "3000:3000"

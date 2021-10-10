@@ -2,7 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    API_HOST: process.env.API_HOST || "0.0.0.0",
-    API_PORT: process.env.API_PORT || "8000",
+    BACKEND_HOST: process.env.BACKEND_HOST || "backend",
+    BACKEND_PORT: process.env.BACKEND_PORT || "8000",
   }
 }
