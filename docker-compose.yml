@@ -9,10 +9,10 @@ services:
     ports:
       - "65432:5432"
 
-  api:
+  backend:
     build:
       dockerfile: Dockerfile
-      context: ./api
+      context: ./backend
     depends_on:
       - postgres
     environment:
@@ -20,6 +20,7 @@ services:
       - DB_PASSWORD=topsecret
       - DB_HOST=postgres
       - DB_PORT=5432
+      - DB_DATABASE=demoshop
       - API_PORT=8000
     ports:
       - "8000:8000"
@@ -29,7 +30,7 @@ services:
       dockerfile: Dockerfile
       context: ./frontend
     depends_on:
-      - api
+      - backend
     environment:
       - API_HOST=0.0.0.0
       - API_PORT=8000

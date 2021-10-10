@@ -11,6 +11,7 @@ RUN yarn run build
 FROM node:14.18.0-alpine
 WORKDIR /usr
 COPY package.json ./
+COPY src/database/seeds/*.csv ./database/seeds/
 RUN yarn install --only=production
 COPY --from=0 /usr/dist .
 RUN yarn global add pm2
