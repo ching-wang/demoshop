@@ -4,5 +4,11 @@ module.exports = {
   env: {
     BACKEND_HOST: process.env.BACKEND_HOST || "backend",
     BACKEND_PORT: process.env.BACKEND_PORT || "8000",
-  }
+  },
+
+  images: {
+    domains: ['lorempixel.com'],
+  },
+
 }
+

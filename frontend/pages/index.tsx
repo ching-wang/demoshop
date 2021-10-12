@@ -1,11 +1,8 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-
-type Product = {
-  id: number;
-  name: string;
-  description: string;
-};
+import { Product } from "../types/product";
+import ProductCard from "../components/productCard/ProductCard";
+import Layout from "../components/layout/layout";
 
 const Home: NextPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -17,15 +14,11 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div style={{padding: "1em"}}>
-      <h1>Products</h1>
+    <Layout>
       {products?.map((p) => (
-        <section key={p.id}>
-          <h2>{p.name}</h2>
-          <p>{p.description}</p>
-        </section>
+          <ProductCard key={p.id} product={p} />
       ))}
-    </div>
+    </Layout>
   );
 };
 

@@ -1,0 +1,21 @@
+.navWrapper {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    font-family: 'Roboto', sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid grey;
+    background-color: white;
+    z-index: 2;
+}
+
+.styledInput {
+    padding: 10px;
+    border: 1px solid grey;
+    color: grey
+}
