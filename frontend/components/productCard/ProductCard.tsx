@@ -18,12 +18,9 @@ const ProductCard = ({ product } : {product: Product}) => {
                        width={220}
                        layout={"fixed"}
                    />
-                   <div>
+                   <p className={styles.text}>
                        {product.name}
-                   </div>
-                   <div>
-                       {product.description}
-                   </div>
+                   </p>
                </a>
            </Link>
        </div>
